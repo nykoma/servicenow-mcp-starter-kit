@@ -1,0 +1,5 @@
+# MCP SDK, plus certifi purely to supply a trusted CA bundle for TLS
+# verification (the system Python has no cert store of its own).
+# All HTTP itself uses the Python stdlib.
+mcp>=1.2.0
+certifi

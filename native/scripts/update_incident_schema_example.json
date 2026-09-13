@@ -1,0 +1,64 @@
+{
+  "type": "object",
+  "description": "Fields to update on the incident. All fields are optional. Include only what you want to change.",
+  "properties": {
+    "short_description": {
+      "type": "string",
+      "description": "Brief summary of the incident.",
+      "example": "User cannot log in to VPN"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the incident.",
+      "example": "User reports being unable to connect to VPN since this morning."
+    },
+    "urgency": {
+      "type": "string",
+      "enum": ["1", "2", "3"],
+      "description": "Urgency code. Verify the actual labels for these codes on your instance — they may not be generic High/Medium/Low.",
+      "example": "2"
+    },
+    "impact": {
+      "type": "string",
+      "enum": ["1", "2", "3"],
+      "description": "Impact code. Verify the actual labels for these codes on your instance — they may not be generic High/Medium/Low.",
+      "example": "2"
+    },
+    "state": {
+      "type": "string",
+      "enum": ["1", "2", "3", "6", "7", "8"],
+      "description": "Incident state code. 1=New, 2=In Progress, 3=On Hold, 6=Resolved, 7=Closed, 8=Cancelled. Verify these values against your instance — custom/additional states are common.",
+      "example": "2"
+    },
+    "assignment_group": {
+      "type": "string",
+      "description": "Name of the group to assign the incident to (exact group name, not sys_id). Must match exactly one active group.",
+      "example": "Service Desk"
+    },
+    "assigned_to": {
+      "type": "string",
+      "description": "Username (user_name, not display name) of the person to assign the incident to.",
+      "example": "jane.doe"
+    },
+    "work_notes": {
+      "type": "string",
+      "description": "Internal note to append to the incident's work notes journal. Visible to agents only. This appends a new entry; it does not replace prior notes.",
+      "example": "Investigated and escalated to network team."
+    },
+    "comments": {
+      "type": "string",
+      "description": "Customer-visible note to append to the incident's comments journal. Visible to the caller and agents. This appends a new entry; it does not replace prior comments.",
+      "example": "We are investigating your issue and will update you shortly."
+    },
+    "close_code": {
+      "type": "string",
+      "description": "Resolution code. Recommended when state is set to 6 (Resolved) or 7 (Closed) — verify the exact field name and choice list your instance actually uses (this is a common source of instance-specific customization).",
+      "example": "Solved (Permanently)"
+    },
+    "close_notes": {
+      "type": "string",
+      "description": "Resolution notes explaining how the incident was resolved. Recommended when state is set to 6 (Resolved) or 7 (Closed).",
+      "example": "Restarted VPN concentrator service; confirmed user connectivity restored."
+    }
+  }
+}
