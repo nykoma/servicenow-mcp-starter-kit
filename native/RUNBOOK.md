@@ -191,6 +191,28 @@ record in the ServiceNow UI, not just the client's reported success.
 
 ---
 
+## A note on AI Control Tower visibility
+
+If your instance has ServiceNow's AI Control Tower installed, worth
+knowing before you decide which pattern to build: **a native `sn_mcp_server`
+build is auto-discovered into AI Control Tower's asset inventory
+(`alm_mcp_digital_asset` / `cmdb_ci_function_mcp`) with zero manual
+registration step** — confirmed directly on a real instance, not inferred
+from docs. The server appears there (in the "Unmanaged" view — discovered,
+not yet governance-reviewed) essentially as soon as it's created.
+
+**An external/BYO MCP server (the `external/` pattern in this repo) does
+not appear in either table at all.** It authenticates like any other OAuth
+REST client, with nothing marking the traffic as coming from an MCP
+server — so it's architecturally invisible to this specific governance
+mechanism, regardless of how much real traffic it generates.
+
+If your organization is relying on AI Control Tower as an inventory of
+"what AI agents/MCP servers touch our data," that inventory is only as
+complete as the native builds — worth factoring into which pattern you
+choose, and worth knowing if you're auditing what's actually visible
+today.
+
 ## Known Gotchas
 
 1. **"Cannot edit in read-only editor" on a Scripted REST Resource's
