@@ -55,3 +55,10 @@ written generically on purpose. Before relying on any specific field name,
 choice value, or "this is required" claim in either RUNBOOK, verify it
 against your actual target instance — don't assume it transfers unchanged
 from wherever it was last built.
+
+## About
+
+Built and maintained by [Delante Bess](https://github.com/delante-nykoma).
+If your team wants help implementing or extending this pattern —
+ServiceNow architecture, AI/MCP integrations, or Flow Designer automation —
+[Nykoma Consulting](https://nykoma.com) can help. Reach out at support@nykoma.com.
